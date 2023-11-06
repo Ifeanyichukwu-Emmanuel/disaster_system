@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dashboard | Disatser</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+    <!-- Sidebar Start -->
+    <div class="sidebar  pb-3 bg-side shadow">
+        <nav class="navbar ">
+            <a href="/" class="navbar-brand mx-4 mb-3">
+                <h3 class="text-light"></i>Disaster System</h3>
+            </a>
+            <div class="d-flex align-items-center text-light ms-4 mb-4">
+                <div class="position-relative">
+                </div>
+                <div class="ms-3">
+                    <span>Hello!</span>
+                    <h6 class="mb-0">
+                        Admin Name Here
+                    </h6>
+
+                </div>
+            </div>
+            <div class="navbar-nav w-100 ">
+
+                <a href="/admin/dashboard" class="nav-item nav-link  fw-bold"><i
+                        class="fa fa-tachometer-alt me-2 text-primary"></i>Dashboard
+                </a>
+
+                <a href="/admin/registered-disaster" class="nav-item  text-light nav-link active  fw-bold"><i
+                    class="fa fa-chart-bar me-2 text-primary"></i>Registered Disaster
+                </a>
+
+                <a href="/admin/report" class="nav-item  text-light nav-link fw-bold"><i
+                        class="fa fa-chart-bar me-2 text-primary"></i>Reported Disasters
+                </a>
+
+                <a href="/admin/profile" class="nav-item text-light nav-link  fw-bold"><i
+                        class="bi bi-people-fill me-2 text-primary"></i></i>Profile
+                </a>
+
+                <a href="/auth/logout" class="nav-item text-light nav-link fw-bold"><i
+                        class="bi bi-box-arrow-in-right me-2 text-primary"></i>Sign-Out
+                </a>
+            </div>
+        </nav>
+    </div>
+    <!-- Sidebar End -->
+    <!-- Content Start -->
+    <div class="content">
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand bg-side sticky-top p-3">
+            <a href="/" class="navbar-brand d-flex d-lg-none me-4">
+                <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+            </a>
+            <a href="#" class="sidebar-toggler flex-shrink-0">
+                <i class="fa fa-bars text-primary"></i>
+            </a>
+        </nav>
+        <!-- Navbar End -->
+
+
+        <!-- Analytics Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="text-end">
+                <a href="" class="btn btn-sm btn-primary text-light mb-3 mt-0" data-bs-toggle="modal" data-bs-target="#registerDisaster"><i class="bi bi-pencil-square  me-2 edit"></i>Register desaster</a>
+            </div>
+            <div class="bg-white text-center rounded p-4 shadow">
+                <div class="msg"></div>
+                <h4 class="fw-bold text-primary">Registered Disasters</h4>
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped text-start align-middle table-bordered table-hover mb-0"
+                        style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Disaster Type</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                         <% if (context.disasters) { %>
+                          <% context.disasters.forEach(disaster=> { %>
+                            <tr>
+                                <td>
+                                    <%= disaster.disaster %>
+                                </td>
+                               
+                                <td>
+                                    <%= disaster.date.toLocaleDateString() %>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-danger" onclick="return deleteDisaster('<%= disaster._id %>')">Delete</button>
+                                </td>
+                            </tr>
+                          <% }) %>
+                         <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Analytics End -->
+        <!-- Footer Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded-top p-4">
+                <div class="">
+                    <div class=" text-center fw-bold text">
+                        &copy; <a href="#" class="text-primary">DRS</a> || All Right Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+
+     <!-- Register Disaster Modal -->
+     <div class="modal fade" id="registerDisaster" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 fw-bold title" id="exampleModalLabel">Register Disatser Now</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerDisasterForm">
+                        <div class="row">
+                            <div class="msg p-3 text-black"></div>
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="fName" class="col-form-label">Disaster Name:</label>
+                                    <input type="text" placeholder="Enter First Name" name="disaster" class="form-control">
+                                    <div class="disasterErr error"></div> 
+                                </div>
+                            </div>
+                        <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                        </div>
+                        <div class="fNameErr error"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- include snippets -->
+    <%- include('../snippets/scripts.ejs') %>
+    <script src="/formHandler/registerDisaster.js"></script>
+    <script src="/formHandler/deleteDisaster.js"></script>
+</body>
+</html>

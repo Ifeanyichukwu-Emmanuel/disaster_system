@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard | Disatser</title>
+    <%- include('../snippets/headers.ejs') %>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Sidebar Start -->
+    <%- include('../snippets/sideBar.ejs') %>
+    <!-- Sidebar End -->
+    <!-- Content Start -->
+    <div class="content">
+
+        <!-- Navbar Start -->
+        <%- include('../snippets/adminNav.ejs') %>
+        <!-- Navbar End -->
+
+        <div class="container-fluid pt-5 px-4 analytics">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-10 sm-12">
+                    <div class="bg-1 rounded d-flex align-items-center justify-content-between p-5">
+                        <i class="fa fa-chart-line fa-3x text-white"></i>
+                        <div class="ms-3">
+                            <p class="mb-2 text-white">Disatsers Types</p>
+                            <% if (context.disasters) { %>
+                            <h6 class="mb-0 text-white">
+                                <%= context.disasters %>
+                            </h6>
+                            <% } else { %>
+                            <h6 class="mb-0 text-white">
+                                0
+                            </h6>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-10 sm-12">
+                    <div class="bg-2 rounded d-flex align-items-center justify-content-between p-5">
+                        <i class="fa fa-chart-bar fa-3x text-white"></i>
+                        <div class="ms-3">
+                            <p class="mb-2 text-white">Reportd Disaters</p>
+                            <% if (context.reports) { %>
+                            <h6 class="mb-0 text-white">
+                                <%= context.reports %>
+                            </h6>
+                            <% } else { %>
+                            <h6 class="mb-0 text-white">
+                                0
+                            </h6>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-10 sm-12">
+                    <div class="bg-3 rounded d-flex align-items-center justify-content-between p-5">
+                        <i class="fa fa-chart-area fa-3x text-white"></i>
+                        <div class="ms-3">
+                            <p class="mb-2 text-white">Admins</p>
+                            <% if (context.admins) { %>
+                            <h6 class="mb-0 text-white  "><%= context.admins %></h6>
+                            <% } else { %>
+                            <h6 class="mb-0 text-white  ">
+                                0
+                            </h6>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded-top p-4">
+                <div class="">
+                    <div class=" text-center fw-bold text">
+                        &copy; <a href="#" class="text-primary">DRS</a> || All Right Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+    <!-- include snippets -->
+    <%- include('../snippets/scripts.ejs') %>
+    <script src="/formHandler/deleteReport.js"></script>
+</body>
+</html>

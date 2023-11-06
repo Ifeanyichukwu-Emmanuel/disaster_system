@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration | Disaster system</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/form.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- boxicons css -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="login-bg">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header shadow fixed-top mb-5">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    
+            <a href="index.html" class="logo d-flex align-items-center">
+                <img src="/img/logo.png" alt="">
+                <span>Report System</span>
+            </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="./home.html">Home</a></li>
+                    <li><a class="nav-link scrollto" href="./home.html">About</a></li>
+                    <li><a class="nav-link scrollto" href="./home.html">Report Disatser</a></li>
+                    <li><a class="nav-link scrollto" href="./home.html">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="./home.html">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+        </div>
+    </header>
+    <!-- End Header -->
+    <div class="container-fluid margin-top">
+        <div class="container mx-auto">
+            <form action="" id="registrationForm">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="text-start">
+                            <img src="/img/diaster-3-removebg-preview.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-3 col-md-12 col-sm-12 ms-auto mb-0">
+                        <div class="p-4 shadow border">
+                            <h5 class="text-primary fw-bold">Create Account</h5>
+                            <div class="msg"></div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="orgName"
+                                    placeholder="name@example.com">
+                                <i class="bi bi-person-fill icon"></i>
+                                <label for="floatingInput" class="fw-bold">Organization Name</label>
+                                <div class="orgNameErr text-center error"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" name="email"
+                                    placeholder="name@example.com">
+                                <i class="bi bi-envelope-fill icon"></i>
+                                <label for="floatingInput" class="fw-bold">Email Address</label>
+                                <div class="emailErr text-center error"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="phone" class="form-control" id="floatingInput" name="phone"
+                                    placeholder="name@example.com">
+                                <i class="bi bi-telephone-fill icon"></i>
+                                <label for="floatingInput" class="fw-bold">Enter Organization Phone Number</label>
+                                <div class="phoneErr text-center error"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="regNo" placeholder="name@example.com">
+                                <i class="bi bi-telephone-fill icon"></i>
+                                <label for="floatingInput" class="fw-bold">Enter Registration Number</label>
+                                <div class="regNoErr text-center error"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="cac" placeholder="name@example.com">
+                                <i class="bi bi-telephone-fill icon"></i>
+                                <label for="floatingInput" class="fw-bold">Enter CAC</label>
+                                <div class="cacErr text-center error"></div>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingInput" name="password" placeholder="name@example.com">
+                                <i class="bx bx-hide show-hide"></i>
+                                <label for="floatingInput" class="fw-bold">Enter Password</label>
+                                <div class="passwordErr text-center error"></div>
+                            </div>
+
+                            <div class="text-center mb-0 mt-3">
+                                <button type="submit" class=" p-3 btn btn-outline-primary btn-sm fw-bold">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- Javascript -->
+<script src="/formHandler/register.js"></script>
+</body>
+</html>

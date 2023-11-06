@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile | Disatser</title>
+    <%- include('../snippets/headers.ejs') %>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Sidebar Start -->
+    <%- include('../snippets/sideBar.ejs') %>
+    <!-- Sidebar End -->
+    <!-- Content Start -->
+    <div class="content">
+        <!-- Navbar Start -->
+        <%- include('../snippets/adminNav.ejs') %>
+        <!-- Navbar End -->
+    
+        <!-- Profile Area Start -->
+        <div class="container-fluid mt-5">
+        
+            <div class="bg-light p-3 mb-5 shadow">
+                <h4 class="text-primary">My Profile</h4>
+                <div class="text-end">
+                    <a href="" class="btn btn-sm btn-primary text-light mb-3 mt-0" data-bs-toggle="modal" data-bs-target="#profile"><i class="bi bi-pencil-square  me-2 edit"></i>Edit Profile</a>
+                </div>
+                <div class="container">
+                    <div class="row">
+
+                        <% if (context.user) { %>
+                        <div class="card p-3 bg-light">
+                            <div class="card bg-light">
+                                <div class="row p-3">
+                                    <div class="col-lg-3 col-md-12 col-sm-12 p-3">
+                                        <div class="mx-auto me-5 p-2">
+                                            <h6 class="">Full Name:</h6>
+                                            <p>
+                                                <%= context.user.orgName %>
+                                            </p>                                          
+                                        </div>
+                                        <div class="mx-auto me-5 p-2">
+                                            <h6 class="">Email:</h6>
+                                            <p class="">
+                                                <%= context.user.email %>
+                                            </p>
+                                        </div>
+                                        <div class="mx-auto me-5 p-2">
+                                            <h6 class="">Phone:</h6>
+                                            <p class="">
+                                                <%= context.user.phone %>
+                                            </p>
+                                        </div>
+                                        <div class="mx-auto me-5 p-2">
+                                            <h6 class="">regNo:</h6>
+                                            <p class="">
+                                                <%= context.user.regNo %>
+                                            </p>
+                                        </div>
+                                        <div class="mx-auto me-5 p-2">
+                                            <h6 class="">CAC:</h6>
+                                            <p class="">
+                                                <%= context.user.cac %>
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-12 col-sm-12 p-4">
+                                        <div class="text-center">
+                                            <h5 class="fw-bold text-primary">Change Password</h5>
+                                        </div>
+                                        <form id="change_password">
+                                            <div class="msg p-3 text-black"></div>
+                                            <div class="row mb-3">
+                                                <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current
+                                                    Password</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="old_password" type="password" class="form-control"
+                                                        id="currentPassword">
+                                                </div>
+                                                <div class="old_passwordErr error"></div>
+                                            </div>
+        
+                                            <div class="row mb-3">
+                                                <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New
+                                                    Password</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="newPassword" type="password" class="form-control"
+                                                        id="newPassword">
+                                                </div>
+                                                <div class="newpasswordErr error"></div>
+                                            </div>
+        
+                                            <div class="row mb-3">
+                                                <label for="password2" class="col-md-4 col-lg-3 col-form-label">Re-enter New
+                                                    Password</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="password2" type="password" class="form-control"
+                                                        id="renewPassword">
+                                                </div>
+                                                <div class="password2Err error"></div>
+                                            </div>
+        
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary">Change Password</button>
+                                            </div>
+                                        </form>
+                                        <!-- End Change Password Form -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Profile Area End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded-top p-4">
+                <div class="">
+                    <div class=" text-center fw-bold text">
+                        &copy; <a href="#" class="text-primary">DRS</a> || All Right Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+    <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 fw-bold title" id="exampleModalLabel">Edit Profile</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateForm">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="fName" class="col-form-label">Full Name:</label>
+                                    <input type="text" placeholder="Enter First Name" name="orgName" class="form-control"
+                                    value="<%= context.user.orgName %>">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="email" class="col-form-label">Email(Optional):</label>
+                                    <input type="email" placeholder="Enter Email Address" name="email" class="form-control"
+                                    value="<%= context.user.email %>">
+                                    
+                                </div>
+                            </div>
+    
+                            <input name="admin_id" type="hidden" class="form-control" id="Country"
+                              value="<%= context.user._id %>">
+    
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="phone_no" class="col-form-label">Phone Number:</label>
+                                    <input type="text" name="phone" placeholder="Enter Phone Number" class="form-control"
+                                    value="<%= context.user.phone %>">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="address" class="col-form-label">Registration Number:</label>
+                                    <input type="text" name="regNo" class="form-control" placeholder="Enter Address"
+                                    value="<%= context.user.regNo %>">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="address" class="col-form-label">CAC:</label>
+                                    <input type="text" name="cac" class="form-control" placeholder="Enter Address"
+                                    value="<%= context.user.cac %>">
+                                    
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="alaert p-3 text-black"></div>
+
+                        <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                        </div>
+                        <div class="orgNameErr error"></div>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- include snippets -->
+    <%- include('../snippets/scripts.ejs') %>
+    <script src="/formHandler/editProfile.js"></script>
+    <script src="/formHandler/changePassword.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard | Disatser</title>
+    <%- include('../snippets/headers.ejs') %>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Sidebar Start -->
+    <%- include('../snippets/sideBar.ejs') %>
+    <!-- Sidebar End -->
+    <!-- Content Start -->
+    <div class="content">
+        <!-- Navbar Start -->
+        <%- include('../snippets/adminNav.ejs') %>
+        <!-- Navbar End -->
+
+        <!-- Disatser Reported Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-white text-center rounded p-4 shadow">
+                <div class="msg"></div>
+                <h4 class="fw-bold text-primary">Total Report</h4>
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped text-start align-middle table-bordered table-hover mb-0"
+                        style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Fullname</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Address</th>
+                                <th>State</th>
+                                <th>Local Goverment</th>
+                                <th>Disaster Type</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody>
+                            <% if (context.reports) { %>
+                            <% context.reports.forEach(report=> { %>
+                            <tr>
+                                <td>
+                                    <%= report.fullName %>
+                                </td>
+                                <td>
+                                    <%= report.email %>
+                                </td>
+                                <td>
+                                    <%= report.phone %>
+                                </td>
+                                <td>
+                                    <%= report.address %>
+                                </td>
+                                <td>
+                                    <%= report.state %>
+                                </td>
+                                <td>
+                                    <%= report.localGovt %>
+                                </td>
+                                <td>
+                                    <%= report.disaster_typ %>
+                                </td>
+                                <td>
+                                    <%= report.date.toLocaleDateString() %>
+                                </td>
+                                <td class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-danger"
+                                    onclick=" return  deleteReport('<%= report._id %>')">Delete</button>
+                                </td>
+                            </tr>
+                            <% }) %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Disatser Reporte End -->
+    </div>
+       
+        
+        <!-- Footer Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded-top p-4">
+                <div class="">
+                    <div class=" text-center fw-bold text">
+                        &copy; <a href="#" class="text-primary">DRS</a> || All Right Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+    
+    <!-- Content End -->
+    <!-- include snippets -->
+    <%- include('../snippets/scripts.ejs') %>
+    <script src="/formHandler/deleteReport.js"></script>
+</body>
+</html>
